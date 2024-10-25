@@ -1,4 +1,4 @@
-name: Nexus
+name: CoreELEC-CM311-1a
 
 on: 
   release:
