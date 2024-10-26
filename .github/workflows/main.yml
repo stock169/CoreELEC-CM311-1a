@@ -40,7 +40,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: ${{ env.FILENAME }}
-        tag_name:  21.1.1-Omega-CM311-1a
+        #tag_name:  21.1.1-Omega-CM311-1a
+        tag_name:  22.0-Piers_nightly-CM311-1a
 
       env:
         GITHUB_TOKEN: ${{ secrets.pat }}
