@@ -1,4 +1,4 @@
-name: CoreELEC-CM311-1a
+name: CoreELEC-CM311-1a-patch
 
 on: 
   release:
