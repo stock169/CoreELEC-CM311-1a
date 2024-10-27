@@ -32,7 +32,8 @@ offset=$(($(fdisk -l -o start ${source_img_name}.img|grep -v "[a-zA-Z]"|grep -v 
 sudo mount -o loop,offset=${offset} ${source_img_name}.img ${mount_point}
 
 echo "Copying CM311-1a DTB file"
-sudo cp ${common_files}/cm311-1a.dtb ${mount_point}/dtb.img
+#sudo cp ${common_files}/cm311-1a.dtb ${mount_point}/dtb.img
+sudo cp ${common_files}/g12a_s905x2_2g.dtb ${mount_point}/dtb.img
 
 echo "Decompressing SYSTEM image"
 sudo unsquashfs -d ${system_root} ${mount_point}/SYSTEM
