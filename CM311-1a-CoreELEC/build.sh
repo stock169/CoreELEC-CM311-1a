@@ -52,11 +52,16 @@ sudo cp ${common_files}/e900v22c.rc_keymap ${config_path}/rc_keymaps/e900v22c
 sudo chown root:root ${config_path}/rc_keymaps/e900v22c
 sudo chmod 0664 ${config_path}/rc_keymaps/e900v22c
 
+echo "Copying kmodconf files"
+sudo cp ${common_files}/veth.conf ${config_path}/modules-load.d/veth.conf
+sudo cp ${common_files}/nft_tproxy.conf ${config_path}/modules-load.d/nft_tproxy.conf
+sudo chmod 0644 ${config_path}/modules-load.d/veth.conf
+sudo chmod 0644 ${config_path}/modules-load.d/nft_tproxy.conf
+
 echo "Copying hwdb files"
 sudo cp ${common_files}/bt-remote.hwdb ${config_path}/hwdb.d/50-bt-remote.hwdb
 sudo chown root:root ${config_path}/hwdb.d/50-bt-remote.hwdb
 sudo chmod 0644 ${config_path}/hwdb.d/50-bt-remote.hwdb
-
 
 echo "Copying firmware files"
 sudo ln -s ../rtl_bt/rtl8761b_config.bin ${firmware_path}/rtlbt/rtl8761b_config
