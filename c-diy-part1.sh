@@ -5,4 +5,4 @@ wget -P packages/debug/memtester/  https://raw.githubusercontent.com/stock169/Co
 rm packages/network/bluez/package.mk
 wget -P packages/network/bluez/ https://raw.githubusercontent.com/stock169/CoreELEC/refs/heads/coreelec-22/packages/network/bluez/package.mk
 rm packages/compress/zlib/package.mk
-wget -P packages/compress/zlib/package.mk https://raw.githubusercontent.com/stock169/CoreELEC/refs/heads/coreelec-22/packages/compress/zlib/package.mk
+wget -P packages/compress/zlib/ https://raw.githubusercontent.com/stock169/CoreELEC/refs/heads/coreelec-22/packages/compress/zlib/package.mk
