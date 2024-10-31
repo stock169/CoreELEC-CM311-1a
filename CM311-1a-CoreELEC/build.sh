@@ -58,6 +58,10 @@ sudo cp ${common_files}/nft_tproxy.conf ${config_path}/modules-load.d/nft_tproxy
 sudo chmod 0644 ${config_path}/modules-load.d/veth.conf
 sudo chmod 0644 ${config_path}/modules-load.d/nft_tproxy.conf
 
+echo "Copying sysctlconf files"
+sudo cp ${common_files}/net.ipv4.ip_forward.conf ${config_path}/sysctl.d/net.ipv4.ip_forward.conf
+sudo chmod 0644 ${config_path}/sysctl.d/net.ipv4.ip_forward.conf
+
 echo "Copying hwdb files"
 sudo cp ${common_files}/bt-remote.hwdb ${config_path}/hwdb.d/50-bt-remote.hwdb
 sudo chown root:root ${config_path}/hwdb.d/50-bt-remote.hwdb
