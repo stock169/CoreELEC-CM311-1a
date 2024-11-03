@@ -55,8 +55,10 @@ sudo chmod 0664 ${config_path}/rc_keymaps/e900v22c
 echo "Copying kmodconf files"
 sudo cp ${common_files}/veth.conf ${config_path}/modules-load.d/veth.conf
 sudo cp ${common_files}/nft_tproxy.conf ${config_path}/modules-load.d/nft_tproxy.conf
+sudo cp ${common_files}/nft_socket.conf ${config_path}/modules-load.d/nft_socket.conf
 sudo chmod 0644 ${config_path}/modules-load.d/veth.conf
 sudo chmod 0644 ${config_path}/modules-load.d/nft_tproxy.conf
+sudo chmod 0644 ${config_path}/modules-load.d/nft_socket.conf
 
 echo "Copying sysctlconf files"
 sudo cp ${common_files}/net.ipv4.ip_forward.conf ${config_path}/sysctl.d/net.ipv4.ip_forward.conf
