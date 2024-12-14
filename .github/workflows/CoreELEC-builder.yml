@@ -25,7 +25,6 @@ jobs:
       uses: actions/checkout@main
       
     - name: Free Disk Space
-      run: |
        sudo -E apt-get -qq update
        sudo -E apt-get -qq install bc
       uses: endersonmenezes/free-disk-space@main
