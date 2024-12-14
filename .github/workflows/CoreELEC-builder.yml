@@ -24,9 +24,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
       
-    - name: Free Disk Space
+    - name: install bc
+      run: |
        sudo -E apt-get -qq update
        sudo -E apt-get -qq install bc
+  
+    - name: Free Disk Space
       uses: endersonmenezes/free-disk-space@main
       with:
           remove_android: true
