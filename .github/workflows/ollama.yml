@@ -6,7 +6,7 @@ on:
 
 env:
   REPO_URL: https://github.com/Maciej-Mogilany/ollama
-  REPO_BRANCH: AMD_APU_GTT_memory
+  REPO_BRANCH: AMD_APU_GTT_memor
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -66,28 +66,25 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH ollama
         ln -sf /workdir/ollama $GITHUB_WORKSPACE/ollama
         cd ollama
-        #git checkout 8a2fccbeaf
         cd ..
-        
+
     - name: Compile the firmware
       id: compile
       run: |
         cd ollama
-        docker build \
-        -f Dockerfile \
-        --platform linux/amd64 \
-        --target runtime-rocm \
-        --build-arg AMDGPU_TARGETS=gfx900 \
-        --build-arg OLLAMA_CUSTOM_CPU_DEFS="-DLLAMA_HIP_UMA=ON" \
-        --build-arg OLLAMA_SKIP_CUDA_GENERATE=1 \
-        --build-arg OLLAMA_SKIP_CUDA_11_GENERATE=1 \
-        --build-arg OLLAMA_SKIP_CUDA_12_GENERATE=1 \
-        --build-arg OLLAMA_SKIP_ONEAPI_GENERATE=1 \
-        -t ollama-gtt .
-#        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
-        docker tag ollama-gtt:latest stock169/ollama-gtt:latest
-#        docker push stock169/ollama-gtt:latest
-
+         make image
+         docker build \
+         -f Dockerfile \
+         --platform linux/amd64 \
+         --target runtime-rocm \
+         --build-arg AMDGPU_TARGETS=gfx900 \
+         --build-arg OLLAMA_CUSTOM_CPU_DEFS="-DLLAMA_HIP_UMA=ON" \
+         --build-arg OLLAMA_SKIP_CUDA_GENERATE=1 \
+         --build-arg OLLAMA_SKIP_CUDA_11_GENERATE=1 \
+         --build-arg OLLAMA_SKIP_CUDA_12_GENERATE=1 \
+         --build-arg OLLAMA_SKIP_ONEAPI_GENERATE=1 \
+         -t ollama-gtt .
+		 
     - name: Check space usage
       if: (!cancelled())
       run: df -hT
