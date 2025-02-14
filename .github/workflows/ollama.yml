@@ -84,7 +84,11 @@ jobs:
         --build-arg OLLAMA_SKIP_CUDA_12_GENERATE=1 \
         --build-arg OLLAMA_SKIP_ONEAPI_GENERATE=1 \
         -t ollama-gtt .
-        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+#        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
         docker tag ollama-gtt:latest stock169/ollama-gtt:latest
         docker push stock169/ollama-gtt:latest
   
