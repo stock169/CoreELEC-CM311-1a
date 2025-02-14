@@ -68,8 +68,7 @@ jobs:
         cd ollama
         #git checkout 8a2fccbeaf
         cd ..
-        
-    - name: Compile the firmware + push
+    - name: Compile the firmware
       id: compile
       run: |
         cd ollama
