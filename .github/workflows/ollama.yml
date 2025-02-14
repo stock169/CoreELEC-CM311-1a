@@ -72,6 +72,7 @@ jobs:
       run: |
          cd ..
          cd ollama
+         ls
          docker build .
 
     - name: Check space usage
