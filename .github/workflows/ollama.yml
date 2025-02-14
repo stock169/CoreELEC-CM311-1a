@@ -93,12 +93,6 @@ jobs:
          username: ${{ secrets.DOCKERHUB_USERNAME }}
          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    - name: Push to Docker Hub
-       id: push
-       run: |
-        docker tag ollama-gtt:latest stock169/ollama-gtt:latest
-        docker push stock169/ollama-gtt:latest
-
     - name: Check space usage
       if: (!cancelled())
       run: df -hT
