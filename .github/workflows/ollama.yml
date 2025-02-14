@@ -7,9 +7,6 @@ on:
 env:
   REPO_URL: https://github.com/Maciej-Mogilany/ollama
   REPO_BRANCH: AMD_APU_GTT_memory
-  CONFIG_FILE: linux.aarch64.conf
-  DIY_P1_SH: c-diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -67,22 +64,10 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH ollama
-        ln -sf /workdir/CoreELEC $GITHUB_WORKSPACE/ollama
+        ln -sf /workdir/ollama $GITHUB_WORKSPACE/ollama
         cd ollama
         #git checkout 8a2fccbeaf
         cd ..
-
-    - name: Load custom diy
-      run: |
-       chmod +x $DIY_P1_SH
-       cd ollama
-       $GITHUB_WORKSPACE/$DIY_P1_SH
-
- 
-    #- name: Load custom configuration
-    #  run: |
-    #    [ -e files ] && mv files CoreELEC/files
-    #    [ -e $CONFIG_FILE ] && mv $CONFIG_FILE CoreELEC/projects/Amlogic-ce/devices/Amlogic-no/linux/linux.aarch64.conf
         
     - name: Compile the firmware
       id: compile
