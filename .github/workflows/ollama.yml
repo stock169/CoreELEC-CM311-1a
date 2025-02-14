@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/Maciej-Mogilany/ollama.git
+  REPO_URL: https://github.com/Maciej-Mogilany/ollama
   REPO_BRANCH: AMD_APU_GTT_memory
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -63,7 +63,7 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH AMD_APU_GTT_memory
+        git clone $REPO_URL -b $REPO_BRANCH allama
         ln -sf /workdir/CoreELEC $GITHUB_WORKSPACE/ollama
         cd ollama
         cd ..
