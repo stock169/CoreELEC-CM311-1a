@@ -6,7 +6,7 @@ on:
 
 env:
   REPO_URL: https://github.com/Maciej-Mogilany/ollama
-  REPO_BRANCH: AMD_APU_GTT_memor
+  REPO_BRANCH: AMD_APU_GTT_memory
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
