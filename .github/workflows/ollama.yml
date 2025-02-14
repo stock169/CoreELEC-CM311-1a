@@ -69,7 +69,7 @@ jobs:
         #git checkout 8a2fccbeaf
         cd ..
         
-    - name: Compile the firmware
+    - name: Compile the firmware + push
       id: compile
       run: |
         cd ollama
@@ -84,6 +84,9 @@ jobs:
         --build-arg OLLAMA_SKIP_CUDA_12_GENERATE=1 \
         --build-arg OLLAMA_SKIP_ONEAPI_GENERATE=1 \
         -t ollama-gtt .
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+        docker tag ollama-gtt:latest stock169/ollama-gtt:latest
+        docker push stock169/ollama-gtt:latest
   
     - name: Check space usage
       if: (!cancelled())
