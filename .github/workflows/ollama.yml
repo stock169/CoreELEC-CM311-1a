@@ -72,7 +72,7 @@ jobs:
       id: compile
       run: |
         cd ollama
-         make image
+        
 
     - name: Check space usage
       if: (!cancelled())
