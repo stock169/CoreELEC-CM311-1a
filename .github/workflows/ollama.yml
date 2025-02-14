@@ -81,8 +81,8 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-    - name: Release Firmware
-      uses: softprops/action-gh-release@v2
-      with:
+    #- name: Release Firmware
+    #  uses: softprops/action-gh-release@v2
+    #  with:
     #    tag_name: ollama_AMDAPU
     #    files: ./CoreELEC/target/*Generic.img.gz
