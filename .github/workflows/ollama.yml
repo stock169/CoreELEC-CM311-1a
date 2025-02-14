@@ -73,7 +73,17 @@ jobs:
       id: compile
       run: |
         cd ollama
-        docker build .
+        docker build \
+        -f Dockerfile \
+        --platform linux/amd64 \
+        --target runtime-rocm \
+        --build-arg AMDGPU_TARGETS=gfx900 \
+        --build-arg OLLAMA_CUSTOM_CPU_DEFS="-DLLAMA_HIP_UMA=ON" \
+        --build-arg OLLAMA_SKIP_CUDA_GENERATE=1 \
+        --build-arg OLLAMA_SKIP_CUDA_11_GENERATE=1 \
+        --build-arg OLLAMA_SKIP_CUDA_12_GENERATE=1 \
+        --build-arg OLLAMA_SKIP_ONEAPI_GENERATE=1 \
+        -t ollama-gtt .
 
     - name: Check space usage
       if: (!cancelled())
