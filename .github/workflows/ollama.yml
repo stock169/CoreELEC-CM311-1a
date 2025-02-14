@@ -71,7 +71,7 @@ jobs:
     - name: Compile the firmware
       id: compile
       run: |
-        cd ollama
+         cd ollama
          make image
          docker build \
          -f Dockerfile \
@@ -84,8 +84,7 @@ jobs:
          --build-arg OLLAMA_SKIP_CUDA_12_GENERATE=1 \
          --build-arg OLLAMA_SKIP_ONEAPI_GENERATE=1 \
          -t ollama-gtt .
-		 
-    - name: Check space usage
+     - name: Check space usage
       if: (!cancelled())
       run: df -hT
 
