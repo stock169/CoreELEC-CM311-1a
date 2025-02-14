@@ -66,12 +66,10 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH ollama
         ln -sf /workdir/CoreELEC $GITHUB_WORKSPACE/ollama
         cd ollama
-        cd ..
-       
+               
     - name: Compile the firmware
       id: compile
       run: |
-        cd ollama
          docker build .
 
     - name: Check space usage
