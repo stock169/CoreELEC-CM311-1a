@@ -1,0 +1,11 @@
+docker run \
+    --stop-signal=SIGKILL \
+    --network host \
+    -v ~/.ollama-new:/root/.ollama \
+    --device /dev/dri \
+    --device /dev/kfd \
+    -e HSA_OVERRIDE_GFX_VERSION=9.0.0 \
+    -e OLLAMA_DEBUG=1 \
+    -e OLLAMA_MAX_LOADED_MODELS=1 \
+    -e OLLAMA_NUM_PARALLEL=1 \
+    --name ollama stock169/ollama-gtt:latest
